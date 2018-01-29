@@ -18,7 +18,8 @@ public class JoueurDao {
 	}
 	public List<Joueur> getAllJoueur(){
 		Query q = entityManager.createNamedQuery("Joueur.findAll");
-		return q.getResultList();
+		List<Joueur> joueurs =  q.getResultList();
+		return joueurs;
 	}
 
 }
