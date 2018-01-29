@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.JoueurDao;
-import entities.Joueur;
+import dao.EtudiantDao;
+import entities.Etudiant;
+
 
 /**
  * Servlet implementation class MainServmet
@@ -30,10 +31,10 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JoueurDao dao = new JoueurDao();
-		List<Joueur> joueurs = dao.getAllJoueur();
+		EtudiantDao dao = new EtudiantDao();
+		List<Etudiant> etudiants = dao.getAllStudents();
 
-		request.setAttribute("joueurs", joueurs);
+		request.setAttribute("etudiants", etudiants);
 
 		this.getServletContext().getRequestDispatcher( "/accueil.jsp" ).forward( request, response );
 	}

@@ -7,18 +7,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import entities.Joueur;
+import entities.Etudiant;
 
-public class JoueurDao {
+public class EtudiantDao {
 	private EntityManager entityManager;
 	
-	public JoueurDao() {
+	public EtudiantDao() {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("CPGE_PU");
 		entityManager=emf.createEntityManager();
 	}
-	public List<Joueur> getAllJoueur(){
-		Query q = entityManager.createNamedQuery("Joueur.findAll");
-		List<Joueur> joueurs =  q.getResultList();
+	public List<Etudiant> getAllStudents(){
+		Query q = entityManager.createNamedQuery("Etudiant.findAll");
+		List<Etudiant> joueurs =  q.getResultList();
 		return joueurs;
 	}
 

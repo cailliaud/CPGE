@@ -8,8 +8,8 @@
 <title>Bienvenue</title>
 </head>
 <body>
-	<c:forEach items="${joueurs }" var="joueur">
-	<p>${joueur.nom }</p>
+	<c:forEach items="${etudiants }" var="etu">
+	<p>${etu.prenomEtudiant } ${etu.nomEtudiant } a pour login ${etu.loginEtudiant }</p>
 	</c:forEach>
 
 
