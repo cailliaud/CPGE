@@ -18,16 +18,6 @@ public class Evalue implements Serializable {
 
 	private int curseur;
 
-	//bi-directional many-to-one association to Competence
-	@ManyToOne
-	@JoinColumn(name="IdCompetence")
-	private Competence competence;
-
-	//bi-directional many-to-one association to Evaluation
-	@ManyToOne
-	@JoinColumn(name="IdEvaluation")
-	private Evaluation evaluation;
-
 	public Evalue() {
 	}
 
@@ -45,22 +35,6 @@ public class Evalue implements Serializable {
 
 	public void setCurseur(int curseur) {
 		this.curseur = curseur;
-	}
-
-	public Competence getCompetence() {
-		return this.competence;
-	}
-
-	public void setCompetence(Competence competence) {
-		this.competence = competence;
-	}
-
-	public Evaluation getEvaluation() {
-		return this.evaluation;
-	}
-
-	public void setEvaluation(Evaluation evaluation) {
-		this.evaluation = evaluation;
 	}
 
 }

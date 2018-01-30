@@ -3,7 +3,6 @@ package entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -23,25 +22,15 @@ public class Evaluation implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 
+	private int idEtudiant;
+
+	private int idMatiere;
+
 	private int note;
 
 	private String sujet;
 
 	private String type;
-
-	//bi-directional many-to-one association to Etudiant
-	@ManyToOne
-	@JoinColumn(name="IdEtudiant")
-	private Etudiant etudiant;
-
-	//bi-directional many-to-one association to Matiere
-	@ManyToOne
-	@JoinColumn(name="IdMatiere")
-	private Matiere matiere;
-
-	//bi-directional many-to-one association to Evalue
-	@OneToMany(mappedBy="evaluation")
-	private List<Evalue> evalues;
 
 	public Evaluation() {
 	}
@@ -70,6 +59,22 @@ public class Evaluation implements Serializable {
 		this.date = date;
 	}
 
+	public int getIdEtudiant() {
+		return this.idEtudiant;
+	}
+
+	public void setIdEtudiant(int idEtudiant) {
+		this.idEtudiant = idEtudiant;
+	}
+
+	public int getIdMatiere() {
+		return this.idMatiere;
+	}
+
+	public void setIdMatiere(int idMatiere) {
+		this.idMatiere = idMatiere;
+	}
+
 	public int getNote() {
 		return this.note;
 	}
@@ -92,44 +97,6 @@ public class Evaluation implements Serializable {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public Etudiant getEtudiant() {
-		return this.etudiant;
-	}
-
-	public void setEtudiant(Etudiant etudiant) {
-		this.etudiant = etudiant;
-	}
-
-	public Matiere getMatiere() {
-		return this.matiere;
-	}
-
-	public void setMatiere(Matiere matiere) {
-		this.matiere = matiere;
-	}
-
-	public List<Evalue> getEvalues() {
-		return this.evalues;
-	}
-
-	public void setEvalues(List<Evalue> evalues) {
-		this.evalues = evalues;
-	}
-
-	public Evalue addEvalue(Evalue evalue) {
-		getEvalues().add(evalue);
-		evalue.setEvaluation(this);
-
-		return evalue;
-	}
-
-	public Evalue removeEvalue(Evalue evalue) {
-		getEvalues().remove(evalue);
-		evalue.setEvaluation(null);
-
-		return evalue;
 	}
 
 }

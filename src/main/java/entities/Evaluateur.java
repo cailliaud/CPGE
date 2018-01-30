@@ -18,6 +18,8 @@ public class Evaluateur implements Serializable {
 
 	private byte estAdmin;
 
+	private int idMatiere;
+
 	private String loginEvaluateur;
 
 	private String mdpEvaluateur;
@@ -25,11 +27,6 @@ public class Evaluateur implements Serializable {
 	private String nomEvaluateur;
 
 	private String prenomEvaluateur;
-
-	//bi-directional many-to-one association to Matiere
-	@ManyToOne
-	@JoinColumn(name="IdMatiere")
-	private Matiere matiere;
 
 	public Evaluateur() {
 	}
@@ -48,6 +45,14 @@ public class Evaluateur implements Serializable {
 
 	public void setEstAdmin(byte estAdmin) {
 		this.estAdmin = estAdmin;
+	}
+
+	public int getIdMatiere() {
+		return this.idMatiere;
+	}
+
+	public void setIdMatiere(int idMatiere) {
+		this.idMatiere = idMatiere;
 	}
 
 	public String getLoginEvaluateur() {
@@ -80,14 +85,6 @@ public class Evaluateur implements Serializable {
 
 	public void setPrenomEvaluateur(String prenomEvaluateur) {
 		this.prenomEvaluateur = prenomEvaluateur;
-	}
-
-	public Matiere getMatiere() {
-		return this.matiere;
-	}
-
-	public void setMatiere(Matiere matiere) {
-		this.matiere = matiere;
 	}
 
 }

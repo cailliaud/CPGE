@@ -16,7 +16,7 @@ import entities.Etudiant;
 /**
  * Servlet implementation class MainServmet
  */
-@WebServlet( name="AccueilServlet", urlPatterns = {"/home"} )
+@WebServlet( name="AccueilServlet", urlPatterns = {"/"} )
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

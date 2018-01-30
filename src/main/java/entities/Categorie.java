@@ -2,7 +2,6 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -18,10 +17,6 @@ public class Categorie implements Serializable {
 	private int idCategorie;
 
 	private String nomCategorie;
-
-	//bi-directional many-to-one association to Souscategorie
-	@OneToMany(mappedBy="categorie")
-	private List<Souscategorie> souscategories;
 
 	public Categorie() {
 	}
@@ -40,28 +35,6 @@ public class Categorie implements Serializable {
 
 	public void setNomCategorie(String nomCategorie) {
 		this.nomCategorie = nomCategorie;
-	}
-
-	public List<Souscategorie> getSouscategories() {
-		return this.souscategories;
-	}
-
-	public void setSouscategories(List<Souscategorie> souscategories) {
-		this.souscategories = souscategories;
-	}
-
-	public Souscategorie addSouscategory(Souscategorie souscategory) {
-		getSouscategories().add(souscategory);
-		souscategory.setCategorie(this);
-
-		return souscategory;
-	}
-
-	public Souscategorie removeSouscategory(Souscategorie souscategory) {
-		getSouscategories().remove(souscategory);
-		souscategory.setCategorie(null);
-
-		return souscategory;
 	}
 
 }

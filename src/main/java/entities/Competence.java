@@ -2,7 +2,6 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -19,18 +18,11 @@ public class Competence implements Serializable {
 
 	private String commentaire;
 
+	private int idSousCategorie;
+
 	private String nomCompetence;
 
 	private int valeurMaxCurseur;
-
-	//bi-directional many-to-one association to Souscategorie
-	@ManyToOne
-	@JoinColumn(name="IdSousCategorie")
-	private Souscategorie souscategorie;
-
-	//bi-directional many-to-one association to Evalue
-	@OneToMany(mappedBy="competence")
-	private List<Evalue> evalues;
 
 	public Competence() {
 	}
@@ -51,6 +43,14 @@ public class Competence implements Serializable {
 		this.commentaire = commentaire;
 	}
 
+	public int getIdSousCategorie() {
+		return this.idSousCategorie;
+	}
+
+	public void setIdSousCategorie(int idSousCategorie) {
+		this.idSousCategorie = idSousCategorie;
+	}
+
 	public String getNomCompetence() {
 		return this.nomCompetence;
 	}
@@ -65,36 +65,6 @@ public class Competence implements Serializable {
 
 	public void setValeurMaxCurseur(int valeurMaxCurseur) {
 		this.valeurMaxCurseur = valeurMaxCurseur;
-	}
-
-	public Souscategorie getSouscategorie() {
-		return this.souscategorie;
-	}
-
-	public void setSouscategorie(Souscategorie souscategorie) {
-		this.souscategorie = souscategorie;
-	}
-
-	public List<Evalue> getEvalues() {
-		return this.evalues;
-	}
-
-	public void setEvalues(List<Evalue> evalues) {
-		this.evalues = evalues;
-	}
-
-	public Evalue addEvalue(Evalue evalue) {
-		getEvalues().add(evalue);
-		evalue.setCompetence(this);
-
-		return evalue;
-	}
-
-	public Evalue removeEvalue(Evalue evalue) {
-		getEvalues().remove(evalue);
-		evalue.setCompetence(null);
-
-		return evalue;
 	}
 
 }
