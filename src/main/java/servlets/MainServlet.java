@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.EtudiantDao;
+import dao.EvaluateurDao;
 import entities.Etudiant;
+import entities.Evaluateur;
 
 
 /**
@@ -33,8 +35,12 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EtudiantDao dao = new EtudiantDao();
 		List<Etudiant> etudiants = dao.getAllStudents();
+		
+		EvaluateurDao daoevaluateur = new EvaluateurDao();
+		List<Evaluateur> evaluateurs = daoevaluateur.getAllEvaluateur();
 
 		request.setAttribute("etudiants", etudiants);
+		request.setAttribute("evaluateurs", evaluateurs);
 
 		this.getServletContext().getRequestDispatcher( "/accueil.jsp" ).forward( request, response );
 	}

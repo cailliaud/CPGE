@@ -48,6 +48,16 @@
 
 	</div>
 	
+	<div class="container2">
+
+		<div class="starter-template2">
+			
+			<c:forEach items="${evaluateurs }" var="eval">
+				<p>${eval.prenomEvaluateur }${eval.nomEvaluateur }a pour login ${eval.loginEvaluateur }</p>
+			</c:forEach>
+		</div>
+
+	</div>
 
 
 	<script src="js/jquery-3.3.1.min.js"></script>
