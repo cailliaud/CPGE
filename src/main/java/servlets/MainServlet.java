@@ -18,7 +18,7 @@ import entities.Evaluateur;
 /**
  * Servlet implementation class MainServmet
  */
-@WebServlet( name="AccueilServlet", urlPatterns = {"/"} )
+@WebServlet( name="AccueilServlet", urlPatterns = {"/index"} )
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

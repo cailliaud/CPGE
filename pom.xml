@@ -9,6 +9,13 @@
 	<description>Projet CPGE</description>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- JSTL -->
 		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
@@ -57,6 +64,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>6.0.6</version>
 		</dependency>
+
 
 
 

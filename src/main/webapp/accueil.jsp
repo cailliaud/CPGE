@@ -1,16 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html >
   <head>
-	<meta http-equiv="Content-Type" content="text/html">
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
 	<title>Bienvenue sur le projet CPGE</title>
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/bootstrap.css"  type="text/css">
+	<link rel="stylesheet" href="css/starter-template.css"  type="text/css">
 	
 </head>
 <body>
@@ -40,20 +37,20 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1>Bootstrap starter template</h1>
+			<h3>Affichage des étudiants et de leurs pseudos</h3>
 			<c:forEach items="${etudiants }" var="etu">
-				<p>${etu.prenomEtudiant }${etu.nomEtudiant }a pour login ${etu.loginEtudiant }</p>
+				<p>${etu.prenomEtudiant }${etu.nomEtudiant } a pour login ${etu.loginEtudiant }</p>
 			</c:forEach>
 		</div>
 
 	</div>
-	
-	<div class="container2">
+	<br>
+	<div class="container">
 
-		<div class="starter-template2">
-			
+		<div class="starter-template">
+			<h3>Affichage des évaluateurs et de leurs pseudos</h3>
 			<c:forEach items="${evaluateurs }" var="eval">
-				<p>${eval.prenomEvaluateur }${eval.nomEvaluateur }a pour login ${eval.loginEvaluateur }</p>
+				<p>${eval.prenomEvaluateur }${eval.nomEvaluateur } a pour login ${eval.loginEvaluateur }</p>
 			</c:forEach>
 		</div>
 
