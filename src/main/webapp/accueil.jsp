@@ -77,7 +77,38 @@
 				<label>Mot de passe : </label>
 				<input type="password" id="mdpetu" name="mdpetu"/>
 				<br/>
-				<input type=submit value="valider"/>
+				<input type=submit value="Valider"/>
+			</form>
+		</div>
+
+	</div>
+	
+	<c:if test="${!empty prenomEval && (!empty nomEval) && (!empty loginEval) && (!empty mdpEval)}"><p><c:out value=" Nom : ${nomEval }, Prénom : ${prenomEval }, Admin : ${estAdmin }, Login : ${loginEval } et Mdp : ${mdpEval }" /></p></c:if> 
+	
+	<div class="container">
+
+		<div class="starter-template">
+			<h3>Ajouter un nouvel évaluateur  </h3>
+			<form method="post">
+				<label> Prénom de l'évaluateur : </label>
+				<input type="text" id="prenomeval" name="prenomeval"/>
+				<br/>
+				<label> Nom de l'évaluateur : </label>
+				<input type="text" id="nomeval" name="nomeval"/>
+				<br/>
+				<label> Est admin (0 = non | 1 = oui) : </label>
+				<select name="estadmin">
+					<option value="1">Est Admin</option>
+        			<option value="0">N'est pas admin</option>
+				</select>			
+				<br/>
+				<label>Login : </label>
+				<input type="text" id="logineval" name="logineval"/>
+				<br/>
+				<label>Mot de passe : </label>
+				<input type="password" id="mdpeval" name="mdpeval"/>
+				<br/>
+				<input type=submit value="Valider"/>
 			</form>
 		</div>
 
