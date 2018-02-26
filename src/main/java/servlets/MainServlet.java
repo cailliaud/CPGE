@@ -49,8 +49,20 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		doGet(request, response);
+		String nomE = request.getParameter("nometu");
+		String prenomE = request.getParameter("prenometu");
+		String loginE = request.getParameter("loginetu");
+		String mdpE = request.getParameter("mdpetu");
+		
+		//request.setAttribute("nomE", nomE);
+		//request.setAttribute("prenomE", prenomE);
+		//request.setAttribute("loginE", loginE);
+		//request.setAttribute("mdpE", mdpE);
+		
+		EtudiantDao dao = new EtudiantDao();
+		dao.addStudent(nomE,prenomE,loginE, mdpE);
+		
+		this.getServletContext().getRequestDispatcher( "/accueil.jsp" ).forward( request, response );
 	}
 
 }

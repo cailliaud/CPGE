@@ -1,15 +1,15 @@
 package dao;
 
-import java.util.List;
+import java.sql.*;
+import java.util.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
 
 import entities.Etudiant;
 
-public class EtudiantDao {
+
+
+public class EtudiantDao {;
 	private EntityManager entityManager;
 	
 	public EtudiantDao() {
@@ -20,6 +20,29 @@ public class EtudiantDao {
 		Query q = entityManager.createNamedQuery("Etudiant.findAll");
 		List<Etudiant> joueurs =  q.getResultList();
 		return joueurs;
+	}
+	
+	public void addStudent(String nomE, String prenomE, String loginE, String mdpE) {
+		Etudiant etu = new Etudiant();
+		etu.setNomEtudiant(nomE);
+		etu.setPrenomEtudiant(prenomE);
+		etu.setLoginEtudiant(loginE);
+		etu.setMdpEtudiant(mdpE);
+		/*création d'une transaction*/
+		EntityTransaction transaction=entityManager.getTransaction(); 
+		/*Démarrer la transaction*/
+		transaction.begin();
+		try {
+			/*enregistrer l'etudiant e dans la base de données*/
+			entityManager.persist(etu); 
+			/*valider la transaction si tout se passe bien*/
+			transaction.commit(); 
+		} catch (Exception ex) {
+			/*Annuler la transaction en cas d'exception*/
+			transaction.rollback(); 
+			ex.printStackTrace();
+		}
+		
 	}
 
 }
