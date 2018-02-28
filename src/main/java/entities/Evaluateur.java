@@ -16,9 +16,7 @@ public class Evaluateur implements Serializable {
 	@Id
 	private int idEvaluateur;
 
-	private byte estAdmin;
-
-	private int idMatiere;
+	private int estAdmin;
 
 	private String loginEvaluateur;
 
@@ -39,20 +37,12 @@ public class Evaluateur implements Serializable {
 		this.idEvaluateur = idEvaluateur;
 	}
 
-	public byte getEstAdmin() {
+	public int getEstAdmin() {
 		return this.estAdmin;
 	}
 
-	public void setEstAdmin(byte estAdmin) {
+	public void setEstAdmin(int estAdmin) {
 		this.estAdmin = estAdmin;
-	}
-
-	public int getIdMatiere() {
-		return this.idMatiere;
-	}
-
-	public void setIdMatiere(int idMatiere) {
-		this.idMatiere = idMatiere;
 	}
 
 	public String getLoginEvaluateur() {
