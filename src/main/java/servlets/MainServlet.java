@@ -49,8 +49,38 @@ public class MainServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		doGet(request, response);
+		//Etudiant
+		String nomE = request.getParameter("nometu");
+		String prenomE = request.getParameter("prenometu");
+		String loginE = request.getParameter("loginetu");
+		String mdpE = request.getParameter("mdpetu");
+		
+		request.setAttribute("nomE", nomE);
+		request.setAttribute("prenomE", prenomE);
+		request.setAttribute("loginE", loginE);
+		request.setAttribute("mdpE", mdpE);
+		
+		EtudiantDao daoEtudiant = new EtudiantDao();
+		daoEtudiant.addStudent(nomE,prenomE,loginE, mdpE);
+		
+		//Evaluateur
+		String nomEval = request.getParameter("nomeval");
+		String prenomEval = request.getParameter("prenomeval");
+		String estA = request.getParameter("estadmin");
+		int estAdmin = Integer.parseInt(estA);
+		String loginEval = request.getParameter("logineval");
+		String mdpEval = request.getParameter("mdpeval");
+		
+		request.setAttribute("nomEval", nomEval);
+		request.setAttribute("prenomEval", prenomEval);
+		request.setAttribute("admin", estAdmin);
+		request.setAttribute("loginEval", loginEval);
+		request.setAttribute("mdpEval", mdpEval);
+		
+		EvaluateurDao daoEvaluateur = new EvaluateurDao();
+		daoEvaluateur.addEvaluateur(nomEval, prenomEval, estAdmin, loginEval, mdpEval);
+		
+		this.getServletContext().getRequestDispatcher( "/accueil.jsp" ).forward( request, response );
 	}
 
 }
