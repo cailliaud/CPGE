@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -9,7 +10,8 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Evaluateur.findAll", query="SELECT e FROM Evaluateur e")
+@NamedQueries({@NamedQuery(name="Evaluateur.findAll", query="SELECT e FROM Evaluateur e"),
+	@NamedQuery(name="EvaluateurModif.findAll",query="SELECT e FROM Evaluateur e ORDER BY e.nomEvaluateur")})
 public class Evaluateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -26,7 +28,12 @@ public class Evaluateur implements Serializable {
 
 	private String prenomEvaluateur;
 
+	//bi-directional many-to-one association to Evaluation
+	@OneToMany(mappedBy="evaluateur")
+	private List<Evaluation> evaluations;
+
 	public Evaluateur() {
+		super();
 	}
 
 	public int getIdEvaluateur() {
@@ -75,6 +82,28 @@ public class Evaluateur implements Serializable {
 
 	public void setPrenomEvaluateur(String prenomEvaluateur) {
 		this.prenomEvaluateur = prenomEvaluateur;
+	}
+
+	public List<Evaluation> getEvaluations() {
+		return this.evaluations;
+	}
+
+	public void setEvaluations(List<Evaluation> evaluations) {
+		this.evaluations = evaluations;
+	}
+
+	public Evaluation addEvaluation(Evaluation evaluation) {
+		getEvaluations().add(evaluation);
+		evaluation.setEvaluateur(this);
+
+		return evaluation;
+	}
+
+	public Evaluation removeEvaluation(Evaluation evaluation) {
+		getEvaluations().remove(evaluation);
+		evaluation.setEvaluateur(null);
+
+		return evaluation;
 	}
 
 }

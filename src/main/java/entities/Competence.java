@@ -23,6 +23,7 @@ public class Competence implements Serializable {
 	private String nomCompetence;
 
 	private int valeurMaxCurseur;
+	
 
 	public Competence() {
 	}
@@ -66,5 +67,4 @@ public class Competence implements Serializable {
 	public void setValeurMaxCurseur(int valeurMaxCurseur) {
 		this.valeurMaxCurseur = valeurMaxCurseur;
 	}
-
 }
