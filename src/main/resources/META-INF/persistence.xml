@@ -11,7 +11,6 @@
 		<class>entities.Evaluation</class>
 		<class>entities.Evalue</class>
 		<class>entities.EvaluePK</class>
-		<class>entities.Matiere</class>
 		<class>entities.Souscategorie</class>
 		<properties>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/cpge?useTimezone=true&amp;serverTimezone=UTC" />

@@ -1,63 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html>
-<html >
-  <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">	
-	<title>Bienvenue sur le projet CPGE</title>
-	<link rel="stylesheet" href="css/bootstrap.css"  type="text/css">
-	<link rel="stylesheet" href="css/starter-template.css"  type="text/css">
-	
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>CPGE</title>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Project name</a>
-		</div>
-		<div id="navbar" class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#about">About</a></li>
-				<li><a href="#contact">Contact</a></li>
-			</ul>
-		</div>
-		<!--/.nav-collapse -->
-	</div>
-	</nav>
 
+	<div id="header">
+		<jsp:include page="header.jsp" />
+	</div>
+	
 	<div class="container">
 
 		<div class="starter-template">
-			<h3>Affichage des étudiants et de leurs pseudos</h3>
-			<c:forEach items="${etudiants }" var="etu">
-				<p>${etu.prenomEtudiant }${etu.nomEtudiant } a pour login ${etu.loginEtudiant }</p>
-			</c:forEach>
+			<br>
+			<br>
+			<h1><strong> Bienvenue sur la plateforme CPGE !</strong></h1>
+			<h4>   <c:if test="${!empty sessionScope.sessionUtilisateur}">
+                    <%-- Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
+                    <p class="succes"> Vous êtes connecté avec le compte de ${sessionScope.sessionUtilisateur.login} </p>
+                </c:if> </h4>
+			
+			<br>
+			<br> 
+			<img src="logo-barthou.png" height="200" width="400" class="img-fluid" alt="Responsive image">
+			
+			
 		</div>
 
 	</div>
-	<br>
-	<div class="container">
-
-		<div class="starter-template">
-			<h3>Affichage des évaluateurs et de leurs pseudos</h3>
-			<c:forEach items="${evaluateurs }" var="eval">
-				<p>${eval.prenomEvaluateur }${eval.nomEvaluateur } a pour login ${eval.loginEvaluateur }</p>
-			</c:forEach>
-		</div>
-
-	</div>
-
-
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	
 </body>
 </html>

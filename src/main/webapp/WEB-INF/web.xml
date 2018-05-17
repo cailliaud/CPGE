@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	<display-name>cpge</display-name>
-
-
-	<welcome-file-list>
-		<welcome-file>accueil.jsp</welcome-file>
-		
-	</welcome-file-list>
-
-
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>cpge</display-name>
+  <welcome-file-list>
+    <welcome-file>accueil.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>SuppressionServlet</display-name>
+    <servlet-name>SuppressionServlet</servlet-name>
+    <servlet-class>servlets.SuppressionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuppressionServlet</servlet-name>
+    <url-pattern>/SuppressionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificationEtu</display-name>
+    <servlet-name>ModificationEtu</servlet-name>
+    <servlet-class>servlets.ModificationEtu</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificationEtu</servlet-name>
+    <url-pattern>/ModificationEtu</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Connexion</display-name>
+    <servlet-name>Connexion</servlet-name>
+    <servlet-class>servlets.Connexion</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Connexion</servlet-name>
+    <url-pattern>/Connexion</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ModificationEvaluateurServlet</display-name>
+    <servlet-name>ModificationEvaluateurServlet</servlet-name>
+    <servlet-class>servlets.ModificationEvaluateurServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ModificationEvaluateurServlet</servlet-name>
+    <url-pattern>/ModificationEvaluateurServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

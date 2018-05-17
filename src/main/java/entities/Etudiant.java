@@ -1,6 +1,8 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.*;
 
 
@@ -9,13 +11,18 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Etudiant.findAll", query="SELECT e FROM Etudiant e")
+@NamedQueries({@NamedQuery(name="Etudiant.findAll", query="SELECT e FROM Etudiant e"),
+	@NamedQuery(name="EtudiantModif.findAll", query="SELECT e FROM Etudiant e ORDER BY e.nomEtudiant"),
+	@NamedQuery(name="TheEtudiant",query="SELECT e FROM Etudiant e ")})
 public class Etudiant implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int idEtudiant;
 
+	@OneToMany(mappedBy="etudiant")
+	private Collection<Evaluation> evaluations;
+	
 	private String loginEtudiant;
 
 	private String mdpEtudiant;
@@ -25,6 +32,7 @@ public class Etudiant implements Serializable {
 	private String prenomEtudiant;
 
 	public Etudiant() {
+		super();
 	}
 
 	public int getIdEtudiant() {

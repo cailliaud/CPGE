@@ -2,6 +2,7 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
@@ -9,16 +10,15 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Evaluateur.findAll", query="SELECT e FROM Evaluateur e")
+@NamedQueries({@NamedQuery(name="Evaluateur.findAll", query="SELECT e FROM Evaluateur e"),
+	@NamedQuery(name="EvaluateurModif.findAll",query="SELECT e FROM Evaluateur e ORDER BY e.nomEvaluateur")})
 public class Evaluateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	private int idEvaluateur;
 
-	private byte estAdmin;
-
-	private int idMatiere;
+	private int estAdmin;
 
 	private String loginEvaluateur;
 
@@ -28,7 +28,12 @@ public class Evaluateur implements Serializable {
 
 	private String prenomEvaluateur;
 
+	//bi-directional many-to-one association to Evaluation
+	@OneToMany(mappedBy="evaluateur")
+	private List<Evaluation> evaluations;
+
 	public Evaluateur() {
+		super();
 	}
 
 	public int getIdEvaluateur() {
@@ -39,20 +44,12 @@ public class Evaluateur implements Serializable {
 		this.idEvaluateur = idEvaluateur;
 	}
 
-	public byte getEstAdmin() {
+	public int getEstAdmin() {
 		return this.estAdmin;
 	}
 
-	public void setEstAdmin(byte estAdmin) {
+	public void setEstAdmin(int estAdmin) {
 		this.estAdmin = estAdmin;
-	}
-
-	public int getIdMatiere() {
-		return this.idMatiere;
-	}
-
-	public void setIdMatiere(int idMatiere) {
-		this.idMatiere = idMatiere;
 	}
 
 	public String getLoginEvaluateur() {
@@ -85,6 +82,28 @@ public class Evaluateur implements Serializable {
 
 	public void setPrenomEvaluateur(String prenomEvaluateur) {
 		this.prenomEvaluateur = prenomEvaluateur;
+	}
+
+	public List<Evaluation> getEvaluations() {
+		return this.evaluations;
+	}
+
+	public void setEvaluations(List<Evaluation> evaluations) {
+		this.evaluations = evaluations;
+	}
+
+	public Evaluation addEvaluation(Evaluation evaluation) {
+		getEvaluations().add(evaluation);
+		evaluation.setEvaluateur(this);
+
+		return evaluation;
+	}
+
+	public Evaluation removeEvaluation(Evaluation evaluation) {
+		getEvaluations().remove(evaluation);
+		evaluation.setEvaluateur(null);
+
+		return evaluation;
 	}
 
 }
