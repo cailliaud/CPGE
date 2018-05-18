@@ -26,7 +26,7 @@ public final class ConnexionForm {
     }
 
     public Utilisateur connecterUtilisateur( HttpServletRequest request ) {
-        /* Récupération des champs du formulaire */
+        /* Rï¿½cupï¿½ration des champs du formulaire */
         String login = getValeurChamp( request, CHAMP_LOGIN );
         String motDePasse = getValeurChamp( request, CHAMP_PASS );
 
@@ -63,11 +63,11 @@ public final class ConnexionForm {
         	utilisateur.setId(dao.getIdEval(login));
         }
 
-        /* Initialisation du résultat global de la validation. */
+        /* Initialisation du rï¿½sultat global de la validation. */
         if ( erreurs.isEmpty() ) {
-            resultat = "Succès de la connexion.";
+            resultat = "Succï¿½s de la connexion.";
         } else {
-            resultat = "Échec de la connexion.";
+            resultat = "ï¿½chec de la connexion.";
         }
 
         return utilisateur;
@@ -80,7 +80,7 @@ public final class ConnexionForm {
     	EtudiantDao dao = new EtudiantDao();
     	EvaluateurDao daoEva = new EvaluateurDao();
         if ( dao.loginExistEtu(log)!=1 && daoEva.loginExistEvaluateur(log)!=1)  {
-            throw new Exception( "Vous n'êtes pas enregistré"+dao.loginExistEtu(log) );
+            throw new Exception( "Vous n'ï¿½tes pas enregistrï¿½"+dao.loginExistEtu(log) );
         }
     }
 
@@ -90,12 +90,12 @@ public final class ConnexionForm {
     private void validationMotDePasse( String mdp ) throws Exception {
     	EtudiantDao daoEtu = new EtudiantDao();
     	EvaluateurDao daoEva = new EvaluateurDao();
-        if ( daoEtu.passExistEtu(mdp)!=1 && daoEva.passExistEvaluateur(mdp)!=1 ) {
+        if ( daoEtu.passExistEtu(mdp)==0 && daoEva.passExistEvaluateur(mdp)==0 ) {
             throw new Exception( "Ce mot de passe n'est pas le bon" );
         }
     }
     /**
-     * Retourne vrai ou faux si c'est un etudiant via le login en paramètre 
+     * Retourne vrai ou faux si c'est un etudiant via le login en paramï¿½tre 
      * @param log
      * @return b
      */
@@ -111,7 +111,7 @@ public final class ConnexionForm {
     	return b; 
     }
     /**
-     * Retourne vrai ou faux si c'est un evaluateur via le login en paramètre 
+     * Retourne vrai ou faux si c'est un evaluateur via le login en paramï¿½tre 
      * @param log
      * @return b
      */
@@ -128,14 +128,14 @@ public final class ConnexionForm {
     }
 
     /*
-     * Ajoute un message correspondant au champ spécifié à la map des erreurs.
+     * Ajoute un message correspondant au champ spï¿½cifiï¿½ ï¿½ la map des erreurs.
      */
     private void setErreur( String champ, String message ) {
         erreurs.put( champ, message );
     }
 
     /*
-     * Méthode utilitaire qui retourne null si un champ est vide, et son contenu
+     * Mï¿½thode utilitaire qui retourne null si un champ est vide, et son contenu
      * sinon.
      */
     private static String getValeurChamp( HttpServletRequest request, String nomChamp ) {
